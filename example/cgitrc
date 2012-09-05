@@ -1,0 +1,41 @@
+# General config
+css=/cgit/cgit.css
+logo=/cgit/cgit.png
+
+#header=/home/gerrit2/review.qrd.qualcomm.com/git/header.html
+#enable-commit-graph=1
+enable-gitweb-owner=1
+enable-log-filecount=1
+enable-log-linecount=1
+#max-commit-length=40
+robots=follow
+
+strict-export=git-daemon-export-ok
+project-list=/home/gerrit2/review.qrd.qualcomm.com/git/cgit-projects.list
+scan-path=/home/gerrit2/review.qrd.qualcomm.com/git
+virtual-root=/
+
+root-desc=qrd git web interface which is more faster, old gitweb still available at http://git.qrd.qualcomm.com:90, contact jiangenj@qualcomm.com if any question or if you don't like the new one.
+root-readme=/home/gerrit2/review.qrd.qualcomm.com/git/header.html
+
+max-repo-count=100
+max-commit-count=100
+
+side-by-side-diffs=1
+snapshots=tar.gz tar.bz2 zip
+max-stats=month
+
+mimetype.gif=image/gif
+mimetype.html=text/html
+mimetype.jpg=image/jpeg
+mimetype.jpeg=image/jpeg
+mimetype.pdf=application/pdf
+mimetype.png=image/png
+mimetype.svg=image/svg+xml
+
+# Seperate config for each projects
+#repo.url=kernel/msm.git
+#repo.path=/home/gerrit2/review.qrd.qualcomm.com/git/kernel/msm.git
+#repo.desc=Linux Kernel
+#repo.owner=qrd
+

@@ -1,0 +1,33 @@
+Alias /cgit /var/www/htdocs/cgit
+
+<VirtualHost *:80>
+  ServerAdmin root@localhost
+  ServerName cgit-server
+
+  DocumentRoot /var/www/htdocs/cgit
+  DirectoryIndex cgit.cgi
+
+  <Directory "/var/www/htdocs/cgit">
+    Options FollowSymlinks ExecCGI
+    Allow from all
+    AllowOverride all
+    Order allow,deny
+
+    <Files cgit.cgi>
+	SetHandler cgi-script
+    </Files>
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^.*$ /cgit.cgi/$0 [L,PT]
+
+  </Directory>
+
+  <Directory "/home/gerrit2/review.qrd.qualcomm.com/git">
+	Allow from all
+  </Directory>
+
+  ErrorLog /var/log/apache2/cgit.error.log
+  CustomLog /var/log/apache2/cgit.access.log combined
+</VirtualHost>
