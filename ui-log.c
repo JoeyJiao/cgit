@@ -148,6 +148,8 @@ void print_commit(struct commit *commit, struct rev_info *revs)
 		html("</td>");
 	}
 
+	html("<td>");
+	html_txt(info->author);
 	htmlf("<td%s>", ctx.qry.showmsg ? " class='logsubject'" : "");
 	if (ctx.qry.showmsg) {
 		/* line-wrap long commit subjects instead of truncating them */
@@ -177,8 +179,7 @@ void print_commit(struct commit *commit, struct rev_info *revs)
 	cgit_commit_link(info->subject, NULL, NULL, ctx.qry.head,
 			 sha1_to_hex(commit->object.sha1), ctx.qry.vpath, 0);
 	show_commit_decorations(commit);
-	html("</td><td>");
-	html_txt(info->author);
+	html("</td>");
 
 	if (revs->graph) {
 		html("</td><td>");
@@ -370,6 +371,7 @@ void cgit_print_log(const char *tip, int ofs, int cnt, char *grep, char *pattern
 		html("<th></th>");
 	else
 		html("<th class='left'>Age</th>");
+	html("<th class='left'>Author</th>");
 	html("<th class='left'>Commit message");
 	if (pager) {
 		html(" (");
@@ -379,7 +381,7 @@ void cgit_print_log(const char *tip, int ofs, int cnt, char *grep, char *pattern
 			      ctx.qry.search, ctx.qry.showmsg ? 0 : 1);
 		html(")");
 	}
-	html("</th><th class='left'>Author</th>");
+	html("</th>");
 	if (commit_graph)
 		html("<th class='left'>Age</th>");
 	if (ctx.repo->enable_log_filecount) {
